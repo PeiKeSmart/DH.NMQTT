@@ -10,7 +10,7 @@ using Xunit;
 
 namespace XUnitTestClient.Clusters;
 
-[TestCaseOrderer("NewLife.UnitTest.DefaultOrderer", "NewLife.UnitTest")]
+[TestCaseOrderer("NewLife.UnitTest.DefaultOrderer", "DH.UnitTest")]
 public class ClusterServerTests
 {
     static ClusterServer _server;

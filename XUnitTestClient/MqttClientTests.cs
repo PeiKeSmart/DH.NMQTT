@@ -12,7 +12,7 @@ using Xunit;
 
 namespace XUnitTestClient;
 
-[TestCaseOrderer("NewLife.UnitTest.DefaultOrderer", "NewLife.UnitTest")]
+[TestCaseOrderer("NewLife.UnitTest.DefaultOrderer", "DH.UnitTest")]
 public class MqttClientTests
 {
     private MqttServer _server;
