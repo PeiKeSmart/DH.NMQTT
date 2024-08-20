@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{50583EA9-E914-41A8-8B88-4CAFB3C8A8C3}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+		NuGet.config = NuGet.config
+		.github\workflows\publish-beta.yml = .github\workflows\publish-beta.yml
+		.github\workflows\publish.yml = .github\workflows\publish.yml
+		README.md = README.md
+		.github\workflows\test.yml = .github\workflows\test.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{109E4120-8D43-4BFB-B1A4-A2FACD1A6817}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DH.NMQTT", "DH.NMQTT\DH.NMQTT.csproj", "{0924F040-4531-476F-80F4-720A5BCFBD98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestClient", "XUnitTestClient\XUnitTestClient.csproj", "{0485076E-B380-49E7-9497-0EA0CE519F00}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DH.MqttServer", "DH.MqttServer\DH.MqttServer.csproj", "{E5C4F10D-AC54-4AB4-8D78-C2FAD3D3B1DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{109E4120-8D43-4BFB-B1A4-A2FACD1A6817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{109E4120-8D43-4BFB-B1A4-A2FACD1A6817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{109E4120-8D43-4BFB-B1A4-A2FACD1A6817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{109E4120-8D43-4BFB-B1A4-A2FACD1A6817}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0924F040-4531-476F-80F4-720A5BCFBD98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0924F040-4531-476F-80F4-720A5BCFBD98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0924F040-4531-476F-80F4-720A5BCFBD98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0924F040-4531-476F-80F4-720A5BCFBD98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0485076E-B380-49E7-9497-0EA0CE519F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0485076E-B380-49E7-9497-0EA0CE519F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0485076E-B380-49E7-9497-0EA0CE519F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0485076E-B380-49E7-9497-0EA0CE519F00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5C4F10D-AC54-4AB4-8D78-C2FAD3D3B1DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C4F10D-AC54-4AB4-8D78-C2FAD3D3B1DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C4F10D-AC54-4AB4-8D78-C2FAD3D3B1DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C4F10D-AC54-4AB4-8D78-C2FAD3D3B1DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1514C3B5-401F-418D-8C5F-9CE839E7DC7B}
+	EndGlobalSection
+EndGlobal
