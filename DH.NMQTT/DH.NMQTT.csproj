@@ -49,7 +49,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="DH.NCore" Version="3.7.2024.905-beta0329" />
+    <PackageReference Include="DH.NCore" Version="3.7.2024.911-beta0807" />
     <PackageReference Include="DH.NRemoting" Version="3.7.2024.907-beta0129" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
