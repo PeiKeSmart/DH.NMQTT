@@ -200,7 +200,7 @@ public class MqttHandler : IMqttHandler, ITracerFeature, ILogFeature
         var message = new PublishMessage
         {
             Topic = topic,
-            Payload = (Packet)pk,
+            Payload = pk,
             QoS = qos,
         };
 
@@ -222,7 +222,7 @@ public class MqttHandler : IMqttHandler, ITracerFeature, ILogFeature
         var message = new PublishMessage
         {
             Topic = topic,
-            Payload = (Packet)pk,
+            Payload = pk,
             QoS = qos,
         };
 

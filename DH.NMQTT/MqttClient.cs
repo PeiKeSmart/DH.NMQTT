@@ -460,7 +460,7 @@ public class MqttClient : DisposeBase
         var message = new PublishMessage
         {
             Topic = topic,
-            Payload = (Packet)pk,
+            Payload = pk,
             QoS = qos,
         };
 
