@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DH.NStardust" Version="3.91.2024.1012-beta0249" />
+    <PackageReference Include="DH.NStardust" Version="3.91.2024.1016-beta0111" />
   </ItemGroup>
 
   <ItemGroup>
