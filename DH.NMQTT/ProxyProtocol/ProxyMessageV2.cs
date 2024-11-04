@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Sockets;
+
 using NewLife.Buffers;
 using NewLife.Data;
 using NewLife.Net;
@@ -24,8 +25,8 @@ public class ProxyMessageV2
     #endregion
 
     #region 核心读写方法
-    private static readonly Byte[] _Magic = [(Byte)'\r', (Byte)'\n', (Byte)'\r', (Byte)'\n', 0, (Byte)'\r', (Byte)'\n', (Byte)'Q', (Byte)'U', (Byte)'I', (Byte)'T', (Byte)'\n'];
-    private static readonly Byte[] _NewLine = [(Byte)'\r', (Byte)'\n'];
+    private static readonly Byte[] _Magic = "\r\n\r\n\0\r\nQUIT\n".GetBytes();
+    private static readonly Byte[] _NewLine = "\r\n".GetBytes();
 
     /// <summary>快速验证协议头</summary>
     /// <param name="data"></param>
@@ -39,7 +40,7 @@ public class ProxyMessageV2
     {
         if (!data.StartsWith(_Magic)) return -1;
 
-        var reader = new SpanReader(data);
+        var reader = new SpanReader(data) { IsLittleEndian = false };
         reader.Advance(_Magic.Length);
 
         var flag = reader.ReadByte();
@@ -47,7 +48,7 @@ public class ProxyMessageV2
         Command = (Byte)(flag & 0x0F);
 
         flag = reader.ReadByte();
-        var len = reader.ReadUInt16();
+        var len = (Int32)reader.ReadUInt16();
 
         var family = (flag >> 4) switch
         {
@@ -69,8 +70,8 @@ public class ProxyMessageV2
         {
             case AddressFamily.InterNetwork:
                 {
-                    var src_addr = reader.ReadInt32();
-                    var dst_addr = reader.ReadInt32();
+                    var src_addr = reader.ReadBytes(4).ToArray();
+                    var dst_addr = reader.ReadBytes(4).ToArray();
                     var src_port = reader.ReadUInt16();
                     var dst_port = reader.ReadUInt16();
 
@@ -80,13 +81,13 @@ public class ProxyMessageV2
                 break;
             case AddressFamily.InterNetworkV6:
                 {
-                    var src_addr = reader.ReadBytes(16);
-                    var dst_addr = reader.ReadBytes(16);
+                    var src_addr = reader.ReadBytes(16).ToArray();
+                    var dst_addr = reader.ReadBytes(16).ToArray();
                     var src_port = reader.ReadUInt16();
                     var dst_port = reader.ReadUInt16();
 
-                    Client = new NetUri(protocol, new IPAddress(src_addr.ToArray()), src_port);
-                    Proxy = new NetUri(protocol, new IPAddress(dst_addr.ToArray()), dst_port);
+                    Client = new NetUri(protocol, new IPAddress(src_addr), src_port);
+                    Proxy = new NetUri(protocol, new IPAddress(dst_addr), dst_port);
                 }
                 break;
             case AddressFamily.Unix:
@@ -100,7 +101,7 @@ public class ProxyMessageV2
         }
 
         // 后续TLV数据
-        len = (UInt16)(_Magic.Length + len - reader.Position);
+        len = _Magic.Length + 1 + 1 + 2 + len - reader.Position;
         if (len > 0)
         {
             var vs = reader.ReadBytes(len);
