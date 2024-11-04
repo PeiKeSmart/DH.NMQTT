@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-
 using NewLife.Collections;
 using NewLife.Log;
 using NewLife.MQTT;
