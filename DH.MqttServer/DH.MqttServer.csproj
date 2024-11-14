@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net8.0</TargetFrameworks>
+    <TargetFrameworks>net9.0</TargetFrameworks>
     <AssemblyName>MqttServer</AssemblyName>
     <Namespace>NewLife.MQTTServer</Namespace>
     <AssemblyTitle>新生命MQTT服务器</AssemblyTitle>
@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DH.NStardust" Version="3.91.2024.1112-beta0839" />
+    <PackageReference Include="DH.NStardust" Version="4.0.2024.1114-beta0438" />
   </ItemGroup>
 
   <ItemGroup>
