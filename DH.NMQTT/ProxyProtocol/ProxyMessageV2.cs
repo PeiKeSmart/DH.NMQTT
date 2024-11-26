@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using System.Net.Sockets;
-
 using NewLife.Buffers;
 using NewLife.Data;
 using NewLife.Net;
