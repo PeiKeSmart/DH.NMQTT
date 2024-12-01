@@ -18,6 +18,7 @@
     <OutputPath>..\Bin\Server</OutputPath>
     <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
     <LangVersion>latest</LangVersion>
+    <WarningsAsErrors>CA2007</WarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
