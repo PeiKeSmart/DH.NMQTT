@@ -448,7 +448,7 @@ public class MqttClient : DisposeBase
         if (Disposed || !Reconnect) return;
 
         WriteLog("尝试重新连接");
-        ConnectAsync().GetAwaiter();
+        ConnectAsync().Wait(Timeout);
     }
     #endregion
 
