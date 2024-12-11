@@ -153,21 +153,19 @@ public class MqttClient : DisposeBase
             WriteLog("正在连接[{0}]", uri);
 
             client = uri.CreateRemote();
-            XTrace.WriteLine($"测试Init1");
+
             client.Log = Log;
             client.Timeout = Timeout;
-            XTrace.WriteLine($"测试Init2");
+
             if (EnableProxyProtocol) client.Add(new ProxyCodec { Client = true });
-            XTrace.WriteLine($"测试Init3");
             client.Add(new MqttCodec());
-            XTrace.WriteLine($"测试Init4");
+
             // 关闭Tcp延迟以合并小包的算法，降低延迟
             if (client is TcpSession tcp)
             {
                 tcp.NoDelay = true;
                 //tcp.DisconnectWhenEmptyData = false;
             }
-            XTrace.WriteLine($"测试Init5");
 
             if (Certificate != null)
             {
@@ -177,13 +175,11 @@ public class MqttClient : DisposeBase
                 tcp2.SslProtocol = SslProtocol;
                 tcp2.Certificate = Certificate;
             }
-            XTrace.WriteLine($"测试Init6");
 
             client.Received += Client_Received;
             client.Closed += Client_Closed;
             client.Error += Client_Error;
             client.Open();
-            XTrace.WriteLine($"测试Init7");
 
             _Client = client;
 
@@ -382,9 +378,8 @@ public class MqttClient : DisposeBase
     /// <returns></returns>
     public async Task<ConnAck> ConnectAsync(ConnectMessage message)
     {
-        XTrace.WriteLine($"调测1");
         if (message == null) throw new ArgumentNullException(nameof(message));
-        XTrace.WriteLine($"调测2");
+
         // 填充客户端Id
         if (message.ClientId.IsNullOrEmpty())
         {
@@ -392,12 +387,12 @@ public class MqttClient : DisposeBase
 
             message.ClientId = ClientId;
         }
-        XTrace.WriteLine($"调测3");
+
         // 心跳
         if (KeepAlive > 0 && message.KeepAliveInSeconds == 0) message.KeepAliveInSeconds = (UInt16)KeepAlive;
-        XTrace.WriteLine($"调测4");
+
         var rs = (await SendAsync(message).ConfigureAwait(false)) as ConnAck;
-        XTrace.WriteLine($"调测5");
+
         // 判断响应，是否成功连接
         if (rs!.ReturnCode != ConnectReturnCode.Accepted)
         {
@@ -405,12 +400,12 @@ public class MqttClient : DisposeBase
             WriteLog(errMsg);
             throw new Exception(errMsg);
         }
-        XTrace.WriteLine($"调测6");
+
         _isConnected = true;
-        XTrace.WriteLine($"调测7");
+
         var e = new EventArgs();
         Connected?.Invoke(this, e);
-        XTrace.WriteLine($"调测8");
+
         // 断线重连后，重新订阅已订阅消息
         if (_subs.Count > 0)
         {
@@ -422,7 +417,7 @@ public class MqttClient : DisposeBase
             var rs2 = (await SendAsync(message2).ConfigureAwait(false)) as SubAck;
             if (rs2 == null) _subs.Clear();
         }
-        XTrace.WriteLine($"调测9");
+
         return rs;
     }
 
@@ -453,7 +448,7 @@ public class MqttClient : DisposeBase
         if (Disposed || !Reconnect) return;
 
         WriteLog("尝试重新连接");
-        ConnectAsync().Wait(Timeout);
+        ConnectAsync().GetAwaiter();
     }
     #endregion
 
