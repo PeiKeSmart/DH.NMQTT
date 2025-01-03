@@ -1,5 +1,4 @@
 ﻿using System;
-
 using NewLife.Data;
 using NewLife.Log;
 using NewLife.MQTT.Handlers;

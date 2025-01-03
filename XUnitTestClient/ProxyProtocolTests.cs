@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-
 using NewLife;
 using NewLife.Data;
 using NewLife.Log;
@@ -8,7 +7,6 @@ using NewLife.Model;
 using NewLife.MQTT;
 using NewLife.MQTT.Handlers;
 using NewLife.MQTT.ProxyProtocol;
-
 using Xunit;
 
 namespace XUnitTestClient;
